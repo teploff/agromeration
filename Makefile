@@ -1,7 +1,16 @@
-.PHONY: build-local up-local
+DC=docker-compose
 
-build-local:
-	go build cmd/main.go
+up:
+	$(DC) up -d pg-auth
 
-up-local:
-	./main
+down:
+	$(DC) down
+
+logs:
+	$(DC) logs -f pg-auth
+
+ps:
+	$(DC) ps
+
+clean:
+	$(DC) down -v
